@@ -47,12 +47,12 @@ t = [['T1', [ 1, 1, 1,-1,-1, 1,-1,-1,-1, 1,-1,-1,-1, 1,-1,-1],  1, False],
      ['T4', [ 1,-1,-1,-1, 1, 1, 1, 1, 1,-1,-1,-1,-1,-1,-1,-1],  1, False],
      ['J4', [ 1, 1, 1, 1,-1,-1,-1, 1,-1,-1, 1, 1,-1,-1,-1,-1], -1, False]]
 
-N = shared(len(t[0][1]), 'N') # the number of inputs/weights
+N = len(t[0][1])  # the number of inputs/weights
 X = T.vector('X') # the input vector
 d = T.scalar('d') # the desired output
 μ = T.dscalar('μ') # the learning rate
 
-W = shared(np.asarray([0.] * 16, dtype=config.floatX), 'W')
+W = shared(np.asarray([0.] * N, dtype=config.floatX), 'W')
 
 y = T.sum(X * W) # the response
 q = T.sgn(y) # the output
