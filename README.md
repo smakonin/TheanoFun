@@ -1,5 +1,5 @@
 # TheanoFun
-Miscellaneous Theano-based Python programs.
+Miscellaneous Theano-based Python 3 programs.
 
 **KnobbyAdaline.py** is an implementation of the original knobby ADALINE experiment.
 
