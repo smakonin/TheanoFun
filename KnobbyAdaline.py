@@ -33,11 +33,11 @@ class adaline(object):
         self.y = T.sum(self.X * self.W) # the response
         self.q = T.sgn(self.y) # the output
         self.e = self.d - self.y # the error
-        self.lms = [[self.W, self.W + self.X * 2 * self.μ * self.e]] # the least means squred algorithm
+        self.lms = self.W + self.X * 2 * self.μ * self.e # the least means squred algorithm
 
         self.activate = function([self.X], self.y, name='activate')
         self.output = function(inputs=[self.X], outputs=self.q, name='output')
-        self.train = function(inputs=[self.X, self.d], outputs=self.y, updates=self.lms, allow_input_downcast=True, name='train')
+        self.train = function(inputs=[self.X, self.d], outputs=self.y, updates=[(self.W, self.lms)], allow_input_downcast=True, name='train')
 
 def main():
     print()

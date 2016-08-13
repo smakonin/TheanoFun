@@ -18,9 +18,9 @@ class linreg(object):
             self.y = self.X * self.W
             self.cost = T.mean(T.sqr(self.y - self.Y))
             self.gradient = T.grad(cost=self.cost, wrt=self.W)
-            self.updates = [[self.W, self.W - self.gradient * 0.01]]
+            self.update = self.W - self.gradient * 0.01
 
-            self.train = function(inputs=[self.X, self.Y], outputs=self.cost, updates=self.updates, allow_input_downcast=True, name='train')
+            self.train = function(inputs=[self.X, self.Y], outputs=self.cost, updates=[(self.W, self.update)], allow_input_downcast=True, name='train')
 
 def main():
     #import matplotlib
